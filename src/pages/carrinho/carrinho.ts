@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { CarrinhoService } from '../../app/carrinho.service';
 
 @IonicPage()
 @Component({
@@ -10,12 +11,11 @@ export class CarrinhoPage {
 
   carrinho = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public carrinhoService: CarrinhoService) {
   }
   
   excluir(index: number) {
-    this.carrinho.splice(index, 1);
-    localStorage.setItem('carrinho', JSON.stringify(this.carrinho));
+    this.carrinho = this.carrinhoService.removeViagem(index); 
     this.toastCtrl.create({
       message: 'Pacote removido com sucesso',
       duration: 2000,
@@ -27,7 +27,7 @@ export class CarrinhoPage {
   }
   
   ionViewWillEnter(){
-    this.carrinho = JSON.parse(localStorage.getItem('carrinho'));
+    this.carrinho = this.carrinhoService.getCarrinho();
   }
 
 }

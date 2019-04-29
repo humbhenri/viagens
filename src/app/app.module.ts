@@ -10,8 +10,10 @@ import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MyApp } from './app.component';
 import { CadastroPage } from '../pages/cadastro/cadastro';
-
-
+import { CarrinhoService } from './carrinho.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import config from './firebase.config'; //https://console.firebase.google.com/project/curso-pbh-ionic/overview?hl=pt-br
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,6 +44,7 @@ import { CadastroPage } from '../pages/cadastro/cadastro';
   providers: [
     StatusBar,
     SplashScreen,
+    CarrinhoService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
