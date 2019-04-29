@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the ComprasPage page.
@@ -14,11 +16,18 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ComprasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseAuth: AngularFireAuth) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComprasPage');
+  }
+
+  sair() {
+    this.firebaseAuth.auth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.navCtrl.setRoot(LoginPage);
+    });
   }
 
 }

@@ -27,6 +27,16 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  isLogged() {
+    return localStorage.getItem('user');
+  }
+
+  ionViewWillEnter(){
+    if (this.isLogged()) {
+      this.navCtrl.setRoot(ComprasPage);
+    }
+  }
+
   goCadastro() {
     this.navCtrl.push(CadastroPage);
   }
@@ -40,6 +50,11 @@ export class LoginPage {
           message: 'Usuário autenticado com sucesso',
           duration: 2000,
         }).present();
+        let obj_user = {
+          id: uid,
+          email: result.user.email,
+        };
+        localStorage.setItem('user', JSON.stringify(obj_user));
         this.navCtrl.setRoot(ComprasPage);
       })
       .catch(error => {
