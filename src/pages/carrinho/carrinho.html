@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Carrinho</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row *ngFor="let item of carrinho; let i = index">
+          <ion-col col-8>{{item.pacote.titulo}}</ion-col>
+          <ion-col col-2>{{item.quantidade}}</ion-col>
+          <ion-col col-2><ion-icon (click)="excluir(i)" color="danger" name="trash"></ion-icon></ion-col>
+        </ion-row>
+      </ion-grid>
+</ion-content>
