@@ -14,6 +14,7 @@ import { CarrinhoService } from './carrinho.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import config from './firebase.config'; //https://console.firebase.google.com/project/curso-pbh-ionic/overview?hl=pt-br
+import { ComprasPage } from '../pages/compras/compras';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import config from './firebase.config'; //https://console.firebase.google.com/pr
     CarrinhoPage,
     LoginPage,
     CadastroPage,
+    ComprasPage,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import config from './firebase.config'; //https://console.firebase.google.com/pr
     DetalhesPage,
     CarrinhoPage,
     LoginPage,
-    CadastroPage
+    CadastroPage,
+    ComprasPage,
   ],
   providers: [
     StatusBar,

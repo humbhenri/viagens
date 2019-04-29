@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { CadastroPage } from '../cadastro/cadastro';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ComprasPage } from '../compras/compras';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,7 +17,10 @@ import { CadastroPage } from '../cadastro/cadastro';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email: string;
+  senha: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseauth: AngularFireAuth, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +29,25 @@ export class LoginPage {
 
   goCadastro() {
     this.navCtrl.push(CadastroPage);
+  }
+
+  logar() {
+    this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.senha)
+      .then(result => {
+        const uid = result.user.uid;
+        console.log(uid);
+        this.toastCtrl.create({
+          message: 'Usuário autenticado com sucesso',
+          duration: 2000,
+        }).present();
+        this.navCtrl.setRoot(ComprasPage);
+      })
+      .catch(error => {
+        console.log(error);
+        this.toastCtrl.create({
+          message: 'Falha na autenticação'
+        }).present();
+      });
   }
 
 }
