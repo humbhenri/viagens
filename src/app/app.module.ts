@@ -18,6 +18,7 @@ import { ComprasPage } from "../pages/compras/compras";
 import { UsuariosProvider } from "../providers/usuarios/usuarios";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { VendasProvider } from '../providers/vendas/vendas';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     SplashScreen,
     CarrinhoService,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    UsuariosProvider
+    UsuariosProvider,
+    VendasProvider
   ]
 })
 export class AppModule {}
