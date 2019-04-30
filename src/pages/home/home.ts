@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { DetalhesPage } from '../detalhes/detalhes';
+import { CarrinhoService } from '../../app/carrinho.service';
 
 @Component({
   selector: 'page-home',
@@ -65,7 +66,7 @@ export class HomePage {
     }    
   ]
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public carrinhoService: CarrinhoService, public toastCtrl: ToastController) {
 
   }
 
@@ -73,22 +74,12 @@ export class HomePage {
     this.navCtrl.push(DetalhesPage, {pacote: pacote});
   }
 
-  // calcular() {
-  //   let n1 = +this.n1;
-  //   let n2 = +this.n2;
-  //   switch (this.op) {
-  //     case '+': this.res = n1 + n2; break;
-  //     case '-': this.res = n1 - n2; break;
-  //     case '/': this.res = n1 / n2; break; 
-  //     case '*': this.res = n1 * n2; break; 
-  //   }
-  // }
-
-  // limpar() {
-  //   this.n1 = null;
-  //   this.n2 = null;
-  //   this.res = null;
-  //   this.op = '';
-  // }
-
+  comprar(pacote) {
+    this.carrinhoService.salvaViagem(pacote);
+    const toast = this.toastCtrl.create({
+      message: 'Viagem adicionada com sucesso!',
+      duration: 3000
+    });
+    toast.present();
+  }
 }
