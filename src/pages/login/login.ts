@@ -44,15 +44,15 @@ export class LoginPage {
   logar() {
     this.firebaseauth.auth.signInWithEmailAndPassword(this.email, this.senha)
       .then(result => {
-        const uid = result.user.uid;
-        console.log(uid);
+        console.log(result);
+        const uid = result.uid;
         this.toastCtrl.create({
           message: 'Usuário autenticado com sucesso',
           duration: 2000,
         }).present();
         let obj_user = {
           id: uid,
-          email: result.user.email,
+          email: result.email,
         };
         localStorage.setItem('user', JSON.stringify(obj_user));
         this.navCtrl.setRoot(ComprasPage);

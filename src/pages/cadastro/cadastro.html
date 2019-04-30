@@ -11,17 +11,29 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list >
-        <ion-item>
-          <ion-label floating>E-mail</ion-label>
-          <ion-input type="text" [(ngModel)]="email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Senha</ion-label>
-          <ion-input type="password" [(ngModel)]="senha"></ion-input>
-        </ion-item>
-        <ion-item>
-          <button ion-button block (click)="cadastrarUsuario()">Cadastrar</button>
-        </ion-item>
-      </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Telefone</ion-label>
+      <ion-input type="text" [(ngModel)]="telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>CPF</ion-label>
+      <ion-input type="text" [(ngModel)]="cpf"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)="cadastrarUsuario()">Cadastrar</button>
+    </ion-item>
+  </ion-list>
 </ion-content>
