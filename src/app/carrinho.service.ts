@@ -19,7 +19,11 @@ export class CarrinhoService {
 
     removeViagem(index: number) {
         let carrinho: any = this.getCarrinho();
-        carrinho.splice(index, 1);
+        let viagem = carrinho[index];
+        viagem.quantidade--;
+        if (viagem.quantidade === 0) {
+            carrinho.splice(index, 1);
+        }
         this.salvaCarrinho(carrinho);
         return carrinho;
     }
