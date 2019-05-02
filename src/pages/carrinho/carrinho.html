@@ -15,7 +15,7 @@
     </ion-row>
   </ion-grid>
   <p *ngIf="!user">Efetue seu login para finalizar sua compra!</p>
-  <button ion-button block color="danger" [disabled]="!user || !carrinho.length" (click)="finalizar()">
+  <button ion-button block color="danger" [disabled]="!user || !carrinho || !carrinho.length" (click)="finalizar()">
     Finalizar compra
   </button>
 </ion-content>

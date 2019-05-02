@@ -22,4 +22,8 @@ export class VendasProvider {
     return false;
   }
 
+  getVendas(user_id: number) {
+    return this.afd.list('/usuario-vendas/' + user_id);
+  }
+
 }

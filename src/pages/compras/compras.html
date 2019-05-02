@@ -11,5 +11,18 @@
 </ion-header>
 
 <ion-content padding>
-<button ion-button block (click)="sair()">Sair</button>
+  <div *ngFor="let compra of compras">
+    <h2>{{ compra.data | date:'dd/MM/yyyy HH:mm' }}</h2>
+    <ion-list *ngFor="let pacote of compra.pacotes">
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="pacote.pacote.imagem" />
+        </ion-avatar>
+        <h2>{{ pacote.pacote.titulo }}</h2>
+        <h3>R$ {{ pacote.pacote.valor }}</h3>
+        <ion-badge item-end>{{ pacote.quantidade }}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </div>
+  <button ion-button block (click)="sair()">Sair</button>
 </ion-content>
